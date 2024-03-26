@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 11) #
 
 add_executable(Proj
 
-main.cpp
-class.cpp)
+main.cpp)
+#class.cpp)

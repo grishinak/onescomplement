@@ -1,62 +1,9 @@
 #include <iostream>
-#include <cstdint>
-#include <bitset>
-#include <cmath>
+#include "class.h"
 
-template<typename T = uint32_t>
-class OnesComplement{
-
-private:   
-T value = 0 ;
-std::bitset<(sizeof(T)*8)> binaryRepresent;
-
-public:
-
-OnesComplement(T valueInput){
-if (valueInput>=0){
-value=valueInput;
-
-binaryRepresent=value;
-} else{
-value=valueInput;
-
-binaryRepresent=abs(value);
-binaryRepresent.flip();
-} 
-}
-
-// Перегрузка оператора сложения
-OnesComplement operator+(const OnesComplement& other) const {
-    T resultValue = value + other.value;
-    return OnesComplement(resultValue);
-}
-
-// Перегрузка оператора вычитания
-OnesComplement operator-(const OnesComplement& other) const {
-    T resultValue = value - other.value;
-    return OnesComplement(resultValue);
-}
-
-// Перегрузка оператора умножения
-OnesComplement operator*(const OnesComplement& other) const {
-    T resultValue = value * other.value;
-    return OnesComplement(resultValue);
-}
-
-// Перегрузка оператора деления
-OnesComplement operator/(const OnesComplement& other) const {
-    T resultValue = value / other.value;
-    return OnesComplement(resultValue);
-}
-
-// Перегрузка оператора вывода <<
-friend std::ostream& operator<<(std::ostream& os, const OnesComplement& oc) {
-    os << "value: \t" << oc.value << "\t binary represent: " << oc.binaryRepresent;
-    return os;
-}
-};
 
 int main() {
+//для int
 OnesComplement<int> a(-12);
 OnesComplement<int> b(5);
 
@@ -75,5 +22,25 @@ std::cout << "Product: \t" << product << std::endl;
 OnesComplement<int> quotient = a / b;
 std::cout << "Quotient: \t" << quotient << std::endl;
 
-    return 0;
+
+//для uint32_t = по умолчанию
+OnesComplement<> x(1);
+OnesComplement<> y(0);
+
+std::cout << "x: \t\t" << x << std::endl;
+std::cout << "y: \t\t" << y << std::endl;
+
+OnesComplement<> sum2 = x + y;
+std::cout << "Sum: \t\t" << sum2 << std::endl;
+
+OnesComplement<> difference2 = x - y;
+std::cout << "Difference: \t" << difference2 << std::endl;
+
+OnesComplement<> product2 = x * y;
+std::cout << "Product: \t" << product2 << std::endl;
+
+OnesComplement<> quotient2 = x / y;
+std::cout << "Quotient: \t" << quotient2 << std::endl;
+
+return 0;
 }
