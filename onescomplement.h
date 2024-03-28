@@ -1,3 +1,6 @@
+#ifndef ONESCOMPLEMENT_H
+#define ONESCOMPLEMENT_H
+
 #include <iostream>
 #include <cstdint>
 #include <bitset>
@@ -55,3 +58,5 @@ friend std::ostream& operator<<(std::ostream& os, const OnesComplement& oc) {
     return os;
 }
 };
+
+#endif //ONESCOMPLEMENT
