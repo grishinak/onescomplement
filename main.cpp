@@ -1,46 +1,39 @@
 #include <iostream>
-#include "onescomplement.h"
+#include <cstdint>
 
+template<typename T = uint32_t>
+class OnesComplement {
+private:   
+    T value = 0;
+    T binaryRepresent[sizeof(T)*8]; // Массив для хранения битового представления числа
+
+public:
+    OnesComplement(T valueInput) {
+        if (valueInput >= 0) {
+            value = valueInput;
+            for (int i = 0; i < sizeof(T)*8; ++i) {
+                binaryRepresent[i] = (value >> i) & 1; // Заполнение массива битов
+            }
+        } else {
+            value = valueInput;
+            T absValue = -value; // Получение абсолютного значения для беззнаковых типов данных
+            for (int i = 0; i < sizeof(T)*8; ++i) {
+                binaryRepresent[i] = !((absValue >> i) & 1); // Заполнение массива инвертированным битовым представлением
+            }
+        } 
+    }
+    
+    void printBinaryRepresentation() {
+        std::cout << "Binary Representation: ";
+        for (int i = sizeof(T)*8 - 1; i >= 0; --i) {
+            std::cout << static_cast<int>(binaryRepresent[i]);
+        }
+        std::cout << std::endl;
+    }
+};
 
 int main() {
-//для int
-OnesComplement<int> a(-12);
-OnesComplement<int> b(5);
-
-std::cout << "a: \t\t" << a << std::endl;
-std::cout << "b: \t\t" << b << std::endl;
-
-OnesComplement<int> sum = a + b;
-std::cout << "Sum: \t\t" << sum << std::endl;
-
-OnesComplement<int> difference = a - b;
-std::cout << "Difference: \t" << difference << std::endl;
-
-OnesComplement<int> product = a * b;
-std::cout << "Product: \t" << product << std::endl;
-
-OnesComplement<int> quotient = a / b;
-std::cout << "Quotient: \t" << quotient << std::endl;
-
-
-//для uint32_t = по умолчанию
-OnesComplement<> x(1);
-OnesComplement<> y(0);
-
-std::cout << "x: \t\t" << x << std::endl;
-std::cout << "y: \t\t" << y << std::endl;
-
-OnesComplement<> sum2 = x + y;
-std::cout << "Sum: \t\t" << sum2 << std::endl;
-
-OnesComplement<> difference2 = x - y;
-std::cout << "Difference: \t" << difference2 << std::endl;
-
-OnesComplement<> product2 = x * y;
-std::cout << "Product: \t" << product2 << std::endl;
-
-OnesComplement<> quotient2 = x / y;
-std::cout << "Quotient: \t" << quotient2 << std::endl;
-
-return 0;
+    OnesComplement<int> onesComp(-5);
+    onesComp.printBinaryRepresentation();
+    return 0;
 }
