@@ -44,7 +44,7 @@ OnesComplement<T> OnesComplement<T>::operator/(const OnesComplement& other) cons
     return OnesComplement(resultValue);
 }
 
-// Перегрузка оператора <<
+// Перегрузка оператора вывода <<
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const OnesComplement<T>& oc) {
     os << "value: \t" << oc.value << "\t binary represent: " << oc.binaryRepresent;

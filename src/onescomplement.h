@@ -16,7 +16,7 @@ private:
 public:
     OnesComplement(T valueInput);
 
-// Перегрузка оператора 
+// Перегрузка арифметических операторов 
     OnesComplement operator+(const OnesComplement& other) const;
     OnesComplement operator-(const OnesComplement& other) const;
     OnesComplement operator*(const OnesComplement& other) const;
