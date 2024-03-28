@@ -1,5 +1,6 @@
 #include "onescomplement.h"
 
+
 template<typename T>
 OnesComplement<T>::OnesComplement(T valueInput){
 if (valueInput>=0){
@@ -50,10 +51,14 @@ std::ostream& operator<<(std::ostream& os, const OnesComplement<T>& oc) {
     return os;
 }
 
+
+
 //Явная инстанциация оператора << , для используемых в программе типов данных для шаблона
 template std::ostream& operator<<(std::ostream& os, const OnesComplement<uint32_t>& oc);
+template std::ostream& operator<<(std::ostream& os, const OnesComplement<uint16_t>& oc);
 template std::ostream& operator<<(std::ostream& os, const OnesComplement<int>& oc);
 
 //Явная инстанциация класса, для используемых в программе типов данных для шаблона
 template class OnesComplement<uint32_t>;
+template class OnesComplement<uint16_t>;
 template class OnesComplement<int>;

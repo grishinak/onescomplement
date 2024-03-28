@@ -1,46 +1,43 @@
 #include <iostream>
 #include "onescomplement.h"
 
+template<typename T> void runTest(T a_, T b_);
+
 
 int main() {
-//для int
-OnesComplement<int> a(-12);
-OnesComplement<int> b(5);
 
-std::cout << "a: \t\t" << a << std::endl;
-std::cout << "b: \t\t" << b << std::endl;
+std::cout << "____________running uint32_t test____________ "<< "\n";
+uint32_t a1=7, b1=2;
+    runTest(a1, b1);
 
-OnesComplement<int> sum = a + b;
-std::cout << "Sum: \t\t" << sum << std::endl;
+std::cout << "____________running int test____________ "<< "\n";
+int a2=-12, b2=7;
+    runTest(a2, b2);
 
-OnesComplement<int> difference = a - b;
-std::cout << "Difference: \t" << difference << std::endl;
-
-OnesComplement<int> product = a * b;
-std::cout << "Product: \t" << product << std::endl;
-
-OnesComplement<int> quotient = a / b;
-std::cout << "Quotient: \t" << quotient << std::endl;
+std::cout << "____________running uint16_t test____________ "<< "\n";
+uint16_t a3=7, b3=2;
+    runTest(a3, b3);
 
 
-//для uint32_t = по умолчанию
-OnesComplement<> x(1);
-OnesComplement<> y(0);
+    return 0;
+}
 
-std::cout << "x: \t\t" << x << std::endl;
-std::cout << "y: \t\t" << y << std::endl;
+template<typename T> void runTest(T a_, T b_) {
+    OnesComplement<T> oc_a_(a_);
+    OnesComplement<T> oc_b_(b_);
 
-OnesComplement<> sum2 = x + y;
-std::cout << "Sum: \t\t" << sum2 << std::endl;
+    std::cout << "First : \t" << oc_a_ << "\n";
+    std::cout << "Second: \t" << oc_b_ << "\n";
 
-OnesComplement<> difference2 = x - y;
-std::cout << "Difference: \t" << difference2 << std::endl;
+    OnesComplement<T> sum = oc_a_ + oc_b_;
+    std::cout << "Sum: \t\t" << sum << "\n";
 
-OnesComplement<> product2 = x * y;
-std::cout << "Product: \t" << product2 << std::endl;
+    OnesComplement<T> difference = oc_a_ - oc_b_;
+    std::cout << "Difference: \t" << difference << "\n";
 
-OnesComplement<> quotient2 = x / y;
-std::cout << "Quotient: \t" << quotient2 << std::endl;
+    OnesComplement<T> product = oc_a_ * oc_b_;
+    std::cout << "Product: \t" << product << "\n";
 
-return 0;
+    OnesComplement<T> quotient = oc_a_ / oc_b_;
+    std::cout << "Quotient: \t" << quotient << "\n\n";
 }
