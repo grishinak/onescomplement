@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.8)
 
 project(MyProjectOneComplement)
 
-set(CMAKE_CXX_STANDARD 11) #
+set(CMAKE_CXX_STANDARD 11) 
 
-add_executable(Proj
+FILE(GLOB_RECURSE headers "src/*.h")
+FILE(GLOB_RECURSE sources "src/*.cpp")
 
-main.cpp)
-#onescomplement.cpp)
+add_executable(Proj ${sources} ${headers})
