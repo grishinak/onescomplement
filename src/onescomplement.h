@@ -27,4 +27,4 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const OnesComplement<U>& oc);
 };
 
-#endif //ONESCOMPLEMENT
+#endif //ONESCOMPLEMENT_H
